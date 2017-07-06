@@ -5,12 +5,33 @@ Using java email API [javax.mail] to send email by SMTP, POP3 and IMAP.
 
 ## How to use:
 
+<<<<<<< HEAD
 ### 1.Get ready
 
 ##### (1)Clone the project to local computer.
+=======
+
+1.Get ready
+
+(1)Clone the project to local computer.
+
+(2)Make sure your computer is ready for the environment of java8 and maven building tools.
+
+(3)Locate to the project working directory.
+
+(4)Execute command: [mvn install -Dmaven.test.skip=true].(maven and jdk needed)
+
+(5)Found the .jar file in directory [target].
+
+(6)Import the .jar file into your project classpath.
+
+
+2.Use the tools
+>>>>>>> 8ac2fdd1561e4e2e9603c5862905d7c18be12e99
 
 ##### (2)Make sure your computer is ready for the environment of java8 and maven building tools.
 
+<<<<<<< HEAD
 ##### (3)Locate to the project working directory.
 
 ##### (4)Execute command: **[mvn install -Dmaven.test.skip=true]**.(maven and jdk needed)
@@ -27,15 +48,24 @@ Using java email API [javax.mail] to send email by SMTP, POP3 and IMAP.
 ###### (1)Send text message
 
 ```
+=======
+(1)Send text message
+
+>>>>>>> 8ac2fdd1561e4e2e9603c5862905d7c18be12e99
 EmailCredential credential = new EmailCredential(${emailHost}, ${portNumber}, ${protocol}, ${userAccount}, ${userAccountPassword});
 EmailTextMessage textMessage = new EmailTextMessage(${senderAddress}, ${receiverAddressArray}, ${subjectOfTheEmail}, ${contentTextMessage});
 EmailUtils.sendTextEmail(credential, textMessage);
 ```
 
 
+<<<<<<< HEAD
 ##### (2)Send multimedia message with attachment file.
 
 ```
+=======
+(2)Send multimedia message with attachment file.
+
+>>>>>>> 8ac2fdd1561e4e2e9603c5862905d7c18be12e99
 EmailCredential credential = new EmailCredential(${emailHost}, ${portNumber}, ${protocol}, ${userAccount}, ${userAccountPassword});
 EmailMultiMediaMessage multiMediaMessage = new EmailMultiMediaMessage();
 multiMediaMessage.setFrom(${senderAddress});
