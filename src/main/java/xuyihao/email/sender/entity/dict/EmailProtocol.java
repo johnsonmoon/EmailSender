@@ -1,4 +1,4 @@
-package xuyihao.email.sender.entity.dit;
+package xuyihao.email.sender.entity.dict;
 
 /**
  * Created by xuyh at 2017/7/5 11:39.

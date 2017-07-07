@@ -3,7 +3,7 @@ package xuyihao.email.sender;
 import xuyihao.email.sender.entity.EmailCredential;
 import xuyihao.email.sender.entity.EmailMultiMediaMessage;
 import xuyihao.email.sender.entity.EmailTextMessage;
-import xuyihao.email.sender.entity.dit.EmailProtocol;
+import xuyihao.email.sender.entity.dict.EmailProtocol;
 import xuyihao.email.sender.util.EmailUtils;
 
 /**

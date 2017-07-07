@@ -1,6 +1,6 @@
 package xuyihao.email.sender.entity;
 
-import xuyihao.email.sender.entity.dit.EmailProtocol;
+import xuyihao.email.sender.entity.dict.EmailProtocol;
 
 /**
  * Credentials for sending email.
