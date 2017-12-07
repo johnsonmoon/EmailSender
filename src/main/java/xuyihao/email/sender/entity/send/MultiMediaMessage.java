@@ -1,14 +1,14 @@
-package xuyihao.email.sender.entity;
+package xuyihao.email.sender.entity.send;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Message details for sending email. (MultiMedia Message)
- *
+ * <p>
  * Created by xuyh at 2017/7/6 16:53.
  */
-public class EmailMultiMediaMessage extends EmailMessage {
+public class MultiMediaMessage extends Message {
 	/**
 	 * Attach files for email message.
 	 */
@@ -22,10 +22,10 @@ public class EmailMultiMediaMessage extends EmailMessage {
 	 */
 	private List<ContentFile> contentFileList;
 
-	public EmailMultiMediaMessage() {
+	public MultiMediaMessage() {
 	}
 
-	public EmailMultiMediaMessage(String from, String[] to, String subject, List<String> attachFilePathNameList,
+	public MultiMediaMessage(String from, String[] to, String subject, List<String> attachFilePathNameList,
 			String contentText, List<ContentFile> contentFileList) {
 		super(from, to, subject);
 		this.attachFilePathNameList = attachFilePathNameList;
@@ -83,9 +83,9 @@ public class EmailMultiMediaMessage extends EmailMessage {
 	/**
 	 * Add an content file.(Could be image, etc.)
 	 * <pre>
-	 *     Should be id-filePathName. 
+	 *     Should be id-filePathName.
 	 * </pre>
-	 * 
+	 *
 	 * @param contentId
 	 * @param contentFilePathName
 	 */
@@ -98,7 +98,7 @@ public class EmailMultiMediaMessage extends EmailMessage {
 	/**
 	 * Remove an content file.
 	 * <pre>
-	 *     Should be id-filePathName. 
+	 *     Should be id-filePathName.
 	 * </pre>
 	 *
 	 * @param contentId
@@ -110,34 +110,5 @@ public class EmailMultiMediaMessage extends EmailMessage {
 		ContentFile contentFile = new ContentFile(contentId, contentFilePathName);
 		if (contentFileList.contains(contentFile))
 			contentFileList.remove(contentFile);
-	}
-
-	public class ContentFile {
-		private String contentId;
-		private String contentFilePathName;
-
-		public ContentFile() {
-		}
-
-		public ContentFile(String contentId, String contentFilePathName) {
-			this.contentId = contentId;
-			this.contentFilePathName = contentFilePathName;
-		}
-
-		public String getContentId() {
-			return contentId;
-		}
-
-		public void setContentId(String contentId) {
-			this.contentId = contentId;
-		}
-
-		public String getContentFilePathName() {
-			return contentFilePathName;
-		}
-
-		public void setContentFilePathName(String contentFilePathName) {
-			this.contentFilePathName = contentFilePathName;
-		}
 	}
 }

@@ -1,9 +1,9 @@
-package xuyihao.email.sender.entity;
+package xuyihao.email.sender.entity.send;
 
 /**
  * Created by xuyh at 2017/7/6 17:03.
  */
-public class EmailMessage {
+public class Message {
 	/**
 	 * Email address for sender.
 	 */
@@ -17,10 +17,10 @@ public class EmailMessage {
 	 */
 	private String subject;
 
-	public EmailMessage() {
+	public Message() {
 	}
 
-	public EmailMessage(String from, String[] to, String subject) {
+	public Message(String from, String[] to, String subject) {
 		this.from = from;
 		this.to = to;
 		this.subject = subject;

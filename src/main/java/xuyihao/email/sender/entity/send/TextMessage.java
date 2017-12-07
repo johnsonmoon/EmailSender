@@ -1,21 +1,21 @@
-package xuyihao.email.sender.entity;
+package xuyihao.email.sender.entity.send;
 
 /**
  * Message details for sending email.(Text message)
  *
  * Created by xuyh at 2017/7/6 11:43.
  */
-public class EmailTextMessage extends EmailMessage {
+public class TextMessage extends Message {
 	/**
 	 * Text content for the message sending.
 	 */
 	private String contentText;
 
-	public EmailTextMessage() {
+	public TextMessage() {
 		super();
 	}
 
-	public EmailTextMessage(String from, String[] to, String subject, String contentText) {
+	public TextMessage(String from, String[] to, String subject, String contentText) {
 		super(from, to, subject);
 		this.contentText = contentText;
 	}

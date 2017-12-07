@@ -1,13 +1,11 @@
 package xuyihao.email.sender.entity;
 
-import xuyihao.email.sender.entity.dict.EmailProtocol;
-
 /**
  * Credentials for sending email.
- *
+ * <p>
  * Created by xuyh at 2017/7/6 11:49.
  */
-public class EmailCredential {
+public class Credential {
 	/**
 	 * email server address
 	 */
@@ -17,10 +15,6 @@ public class EmailCredential {
 	 */
 	private int port;
 	/**
-	 * email server protocol choose (smtp, pop3, etc.)
-	 */
-	private EmailProtocol protocol;
-	/**
 	 * user account for authentication
 	 */
 	private String user;
@@ -29,13 +23,12 @@ public class EmailCredential {
 	 */
 	private String password;
 
-	public EmailCredential() {
+	public Credential() {
 	}
 
-	public EmailCredential(String host, int port, EmailProtocol protocol, String user, String password) {
+	public Credential(String host, int port, String user, String password) {
 		this.host = host;
 		this.port = port;
-		this.protocol = protocol;
 		this.user = user;
 		this.password = password;
 	}
@@ -54,14 +47,6 @@ public class EmailCredential {
 
 	public void setPort(int port) {
 		this.port = port;
-	}
-
-	public EmailProtocol getProtocol() {
-		return protocol;
-	}
-
-	public void setProtocol(EmailProtocol protocol) {
-		this.protocol = protocol;
 	}
 
 	public String getUser() {

@@ -1,9 +1,9 @@
 package xuyihao.email.sender.util;
 
-import xuyihao.email.sender.entity.EmailCredential;
-import xuyihao.email.sender.entity.EmailMultiMediaMessage;
-import xuyihao.email.sender.entity.EmailTextMessage;
-import xuyihao.email.sender.entity.dict.EmailProtocol;
+import xuyihao.email.sender.entity.Credential;
+import xuyihao.email.sender.entity.send.ContentFile;
+import xuyihao.email.sender.entity.send.MultiMediaMessage;
+import xuyihao.email.sender.entity.send.TextMessage;
 
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
@@ -24,52 +24,30 @@ import java.util.Properties;
  *     Utilities for sending email message.
  *     To be continued.(Normal message sending & Message sending with files)
  * </pre>
- *
+ * <p>
  * Created by xuyh at 2017/7/5 11:30.
  */
-public class EmailUtils {
-	/**
-	 * Send one message to one receiver.
-	 *
-	 * @param host mail server address
-	 * @param port mail server port
-	 * @param protocol protocol for sending message
-	 * @param user mail account
-	 * @param password mail account authentication password
-	 * @param from sender address
-	 * @param to receiver address
-	 * @param subject title for the message
-	 * @param contentText content for the message
-	 * @throws MessagingException
-	 */
-	public static void sendTextEmail(String host, int port, EmailProtocol protocol, String user, String password,
-			String from, String to, String subject, String contentText) throws MessagingException {
-		EmailCredential credential = new EmailCredential(host, port, protocol, user, password);
-		EmailTextMessage textMessage = new EmailTextMessage(from, new String[] { to }, subject, contentText);
-		Session session = createSession(credential);
-		sendMessage(session, createTextMessage(session, textMessage), credential);
-	}
-
+public class SMTPUtils {
 	/**
 	 * Send messages to many receivers.
 	 *
-	 * @param credential Credential information.
+	 * @param credential  Credential information.
 	 * @param textMessage Email text message.
 	 * @throws MessagingException
 	 */
-	public static void sendTextEmail(EmailCredential credential, EmailTextMessage textMessage) throws MessagingException {
+	public static void sendTextEmail(Credential credential, TextMessage textMessage) throws MessagingException {
 		Session session = createSession(credential);
 		sendMessage(session, createTextMessage(session, textMessage), credential);
 	}
 
 	/**
 	 * Send multimedia message to many receivers.
-	 * 
-	 * @param credential Credential information.
+	 *
+	 * @param credential        Credential information.
 	 * @param multiMediaMessage Email multimedia message.
 	 * @throws MessagingException
 	 */
-	public static void sendMultiMediaEmail(EmailCredential credential, EmailMultiMediaMessage multiMediaMessage)
+	public static void sendMultiMediaEmail(Credential credential, MultiMediaMessage multiMediaMessage)
 			throws MessagingException {
 		Session session = createSession(credential);
 		sendMessage(session, createMultiMediaMessage(session, multiMediaMessage), credential);
@@ -83,7 +61,7 @@ public class EmailUtils {
 	 * @return
 	 * @throws MessagingException
 	 */
-	private static Message createTextMessage(Session session, EmailTextMessage textMessage) throws MessagingException {
+	private static Message createTextMessage(Session session, TextMessage textMessage) throws MessagingException {
 		Message message = new MimeMessage(session);
 		message.setFrom(new InternetAddress(textMessage.getFrom()));//设置发送人
 		message.setRecipient(Message.RecipientType.CC, new InternetAddress(textMessage.getFrom()));
@@ -106,7 +84,7 @@ public class EmailUtils {
 	 * @return
 	 * @throws MessagingException
 	 */
-	private static Message createMultiMediaMessage(Session session, EmailMultiMediaMessage multiMediaMessage)
+	private static Message createMultiMediaMessage(Session session, MultiMediaMessage multiMediaMessage)
 			throws MessagingException {
 		Message message = new MimeMessage(session);
 		message.setFrom(new InternetAddress(multiMediaMessage.getFrom()));
@@ -134,7 +112,7 @@ public class EmailUtils {
 		textBody.setContent(multiMediaMessage.getContentText(), "text/html;charset=utf-8");
 		contentMultiPart.addBodyPart(textBody);
 		//正文图片部分
-		for (EmailMultiMediaMessage.ContentFile contentFile : multiMediaMessage.getContentFileList()) {
+		for (ContentFile contentFile : multiMediaMessage.getContentFileList()) {
 			MimeBodyPart fileBody = new MimeBodyPart();
 			FileDataSource fileDataSource1 = new FileDataSource(contentFile.getContentFilePathName());
 			fileBody.setDataHandler(new DataHandler(fileDataSource1));
@@ -163,7 +141,7 @@ public class EmailUtils {
 	 * @param credential
 	 * @throws MessagingException
 	 */
-	private static void sendMessage(Session session, Message message, EmailCredential credential)
+	private static void sendMessage(Session session, Message message, Credential credential)
 			throws MessagingException {
 		Transport tran = session.getTransport();
 		tran.connect(credential.getHost(), credential.getPort(), credential.getUser(), credential.getPassword());//邮箱服务器
@@ -172,29 +150,15 @@ public class EmailUtils {
 	}
 
 	/**
-	 * Create session of email connection.
-	 * 
+	 * Create smtp session of email connection.
+	 *
 	 * @param credential
 	 * @return
 	 */
-	private static Session createSession(EmailCredential credential) {
+	private static Session createSession(Credential credential) {
 		Properties properties = new Properties();
-		switch (credential.getProtocol()) {
-		case IMAP:
-			properties.setProperty("mail.store.protocol", EmailProtocol.IMAP.getName());
-			properties.setProperty("mail.imap.host", credential.getHost());
-			properties.setProperty("mail.imap.port", String.valueOf(credential.getPort()));
-			break;
-		case POP3:
-			properties.setProperty("mail.store.protocol", EmailProtocol.POP3.getName());
-			properties.setProperty("mail.pop3.host", credential.getHost());
-			properties.setProperty("mail.pop3.port", String.valueOf(credential.getPort()));
-			break;
-		case SMTP:
-			properties.setProperty("mail.transport.protocol", EmailProtocol.SMTP.getName());
-			properties.setProperty("mail.smtp.auth", "true");
-			break;
-		}
+		properties.setProperty("mail.transport.protocol", "smtp");
+		properties.setProperty("mail.smtp.auth", "true");
 		return Session.getInstance(properties);
 	}
 }

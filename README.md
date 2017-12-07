@@ -1,7 +1,7 @@
 # EmailSender
 Email tools for java.
 
-Using java email API [javax.mail] to send email by SMTP, POP3 and IMAP.
+Using java email API [javax.mail] to send email by SMTP protocol
 
 ## How to use:
 
@@ -19,48 +19,37 @@ Using java email API [javax.mail] to send email by SMTP, POP3 and IMAP.
 
 ##### (6)Import the .jar file into your project classpath.
 
+### 2.Dependencies
+maven dependencies
+```
+<dependency>
+	<groupId>com.sun.mail</groupId>
+	<artifactId>javax.mail</artifactId>
+	<version>1.5.6</version>
+</dependency>
+```
 
-### 2.Use the tools
+### 3.Use the tools
 
 #### examples:
 
 ###### (1)Send text message
 
 ```
-EmailCredential credential = new EmailCredential(${emailHost}, ${portNumber}, ${protocol}, ${userAccount}, ${userAccountPassword});
-EmailTextMessage textMessage = new EmailTextMessage(${senderAddress}, ${receiverAddressArray}, ${subjectOfTheEmail}, ${contentTextMessage});
-EmailUtils.sendTextEmail(credential, textMessage);
+EmailSender.send(
+        EmailSender.createCredential("host", 25, "user", "password"),
+        EmailSender.createTextMessage("from", new String[]{"to"}, "subject", "content")
+);
 ```
 
 
 ##### (2)Send multimedia message with attachment file.
 
 ```
-EmailCredential credential = new EmailCredential(${emailHost}, ${portNumber}, ${protocol}, ${userAccount}, ${userAccountPassword});
-EmailMultiMediaMessage multiMediaMessage = new EmailMultiMediaMessage();
-multiMediaMessage.setFrom(${senderAddress});
-multiMediaMessage.setTo(new String[] { ${receiverAddressArray} });
-multiMediaMessage.setSubject(${subjectOfTheEmail});
-multiMediaMessage.setContentText("<html>\n" +
-        "\t<head>\n" +
-        "\t\t<title>test email with files</title>\n" +
-        "\t</head>\n" +
-        "\n" +
-        "\t<body>\n" +
-        "\t\t<pre>\n" +
-        "\t\t\tHello\n" +
-        "\t\t\t<img src = \"cid:${id_1_contentFile}\">\n" +
-        "\t\t\t<img src = \"cid:${id_2_contentFile}\">\n" +
-        "\t\t\t<img src = \"cid:${id_3_contentFile}\">\n" +
-        "\t\t</pre>\n" +
-        "\t</body>\n" +
-        "</html>");
-multiMediaMessage.addContentFile(${id_1_contentFile}, ${contentFilePath_1});
-multiMediaMessage.addContentFile(${id_2_contentFile}, ${contentFilePath_2});
-multiMediaMessage.addContentFile(${id_3_contentFile}, ${contentFilePath_3});
-multiMediaMessage.addAttachFile(${attachmentFilePath_1});
-multiMediaMessage.addAttachFile(${attachmentFilePath_2});
-multiMediaMessage.addAttachFile(${attachmentFilePath_3});
-EmailUtils.sendMultiMediaEmail(credential, multiMediaMessage);
+EmailSender.send(
+        EmailSender.createCredential("host", 25, "user", "password"),
+        EmailSender.createMultiMediaMessage("from", new String[]{"to"}, "subject", Arrays.asList("attachFilepathName1", "attachFilePath2"),
+                "contentText", new ArrayList<>())
+);
 ```
 
