@@ -35,6 +35,23 @@ maven dependencies
 
 ### 3.Use the tools
 
+#### add maven dependency like this:
+```
+<dependency>
+	<groupId>xuyihao</groupId>
+	<artifactId>email-sender</artifactId>
+	<version>1.1</version>
+	<scope>system</scope>
+	<systemPath>${basedir}/src/main/lib/email-sender-1.1.jar</systemPath>
+</dependency>
+
+<dependency>
+	<groupId>com.sun.mail</groupId>
+	<artifactId>javax.mail</artifactId>
+	<version>1.5.6</version>
+</dependency>
+```
+
 #### examples:
 
 ###### (1)Send text message

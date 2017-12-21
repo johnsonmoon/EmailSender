@@ -14,7 +14,7 @@
 	</properties>
 
 	<build>
-		<finalName>email-sender-1.1</finalName>
+		<finalName>email-sender-${version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
