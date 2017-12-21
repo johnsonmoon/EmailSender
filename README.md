@@ -3,6 +3,10 @@ Email tools for java.
 
 Using java email API [javax.mail] to send email by SMTP protocol
 
+## Update Information
+- 1.1
+Create [EmailSender] class and remove POP3,IMAP protocol from sender program(unsupported by sending email). 
+
 ## How to use:
 
 ### 1.Get ready
