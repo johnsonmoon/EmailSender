@@ -5,7 +5,7 @@
 
 	<groupId>xuyihao</groupId>
 	<artifactId>email-sender</artifactId>
-	<version>1.1</version>
+	<version>1.2.0</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -14,7 +14,7 @@
 	</properties>
 
 	<build>
-		<finalName>email-sender-1.1</finalName>
+		<finalName>email-sender-${version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -65,6 +65,11 @@
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
 			<version>1.5.6</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
 		</dependency>
 	</dependencies>
 

@@ -15,6 +15,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import java.security.Security;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -156,9 +157,30 @@ public class SMTPUtils {
 	 * @return
 	 */
 	private static Session createSession(Credential credential) {
+		return Session.getInstance(createProperties(credential));
+	}
+
+	@SuppressWarnings("restriction")
+	private static Properties createProperties(Credential credential) {
 		Properties properties = new Properties();
-		properties.setProperty("mail.transport.protocol", "smtp");
-		properties.setProperty("mail.smtp.auth", "true");
-		return Session.getInstance(properties);
+		switch (credential.getPort()) {
+		case 25://Normal way of sending email with SMTP protocol
+			properties.setProperty("mail.transport.protocol", "smtp");
+			properties.setProperty("mail.smtp.auth", "true");
+			break;
+		case 465://SSL way of sending email with SMTP protocol
+			Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+			properties.setProperty("mail.transport.protocol", "smtp");
+			properties.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+			properties.setProperty("mail.smtp.socketFactory.fallback", "false");
+			properties.setProperty("mail.smtp.port", String.valueOf(credential.getPort()));
+			properties.setProperty("mail.smtp.socketFactory.port", String.valueOf(credential.getPort()));
+			properties.setProperty("mail.smtp.auth", "true");
+			break;
+		default:
+			properties.setProperty("mail.transport.protocol", "smtp");
+			properties.setProperty("mail.smtp.auth", "true");
+		}
+		return properties;
 	}
 }
