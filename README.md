@@ -22,6 +22,23 @@ Using java email API [javax.mail] to send email by SMTP, POP3 and IMAP.
 
 ### 2.Use the tools
 
+### add maven dependency like this:
+```
+<dependency>
+	<groupId>xuyihao</groupId>
+	<artifactId>email-sender</artifactId>
+	<version>1.0</version>
+	<scope>system</scope>
+	<systemPath>${basedir}/src/main/lib/email-sender-1.0.jar</systemPath>
+</dependency>
+
+<dependency>
+	<groupId>com.sun.mail</groupId>
+	<artifactId>javax.mail</artifactId>
+	<version>1.5.6</version>
+</dependency>
+```
+
 #### examples:
 
 ###### (1)Send text message
