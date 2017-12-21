@@ -3,6 +3,10 @@ Email tools for java.
 
 Using java email API [javax.mail] to send email by SMTP protocol
 
+## Update Infomation
+- 1.2.0
+Support SSL connection of SMTP protocol.
+
 ## How to use:
 
 ### 1.Get ready
