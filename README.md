@@ -6,6 +6,8 @@ Using java email API [javax.mail] to send email by SMTP protocol
 ## Update Infomation
 - 1.2.0
 Support SSL connection of SMTP protocol.
+- 1.3.0
+Rename package and group name.
 
 ## How to use:
 
@@ -41,9 +43,9 @@ maven dependencies
 <dependency>
 	<groupId>com.github.johnsonmoon</groupId>
 	<artifactId>email-sender</artifactId>
-	<version>1.2.0</version>
+	<version>${version}</version>
 	<scope>system</scope>
-	<systemPath>${basedir}/src/main/lib/email-sender-1.2.0.jar</systemPath>
+	<systemPath>${basedir}/src/main/lib/email-sender-${version}.jar</systemPath>
 </dependency>
 
 <dependency>
