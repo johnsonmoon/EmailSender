@@ -1,4 +1,4 @@
-package xuyihao.email.sender.entity;
+package com.github.johnsonmoon.email.sender.entity;
 
 /**
  * Credentials for sending email.

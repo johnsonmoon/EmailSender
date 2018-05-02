@@ -1,4 +1,4 @@
-package xuyihao.email.sender.learn;
+package com.github.johnsonmoon.email.sender.learn;
 
 import org.junit.Test;
 

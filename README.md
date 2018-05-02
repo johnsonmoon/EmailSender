@@ -39,7 +39,7 @@ maven dependencies
 
 ```
 <dependency>
-	<groupId>xuyihao</groupId>
+	<groupId>com.github.johnsonmoon</groupId>
 	<artifactId>email-sender</artifactId>
 	<version>1.2.0</version>
 	<scope>system</scope>

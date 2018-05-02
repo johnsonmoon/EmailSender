@@ -1,11 +1,11 @@
-package xuyihao.email.sender.core;
+package com.github.johnsonmoon.email.sender.core;
 
-import xuyihao.email.sender.entity.Credential;
-import xuyihao.email.sender.entity.send.ContentFile;
-import xuyihao.email.sender.entity.send.Message;
-import xuyihao.email.sender.entity.send.MultiMediaMessage;
-import xuyihao.email.sender.entity.send.TextMessage;
-import xuyihao.email.sender.util.SMTPUtils;
+import com.github.johnsonmoon.email.sender.entity.Credential;
+import com.github.johnsonmoon.email.sender.entity.send.ContentFile;
+import com.github.johnsonmoon.email.sender.entity.send.Message;
+import com.github.johnsonmoon.email.sender.entity.send.MultiMediaMessage;
+import com.github.johnsonmoon.email.sender.entity.send.TextMessage;
+import com.github.johnsonmoon.email.sender.util.SMTPUtils;
 
 import javax.mail.MessagingException;
 import java.util.List;

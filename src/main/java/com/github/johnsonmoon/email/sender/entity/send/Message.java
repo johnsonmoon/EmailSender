@@ -1,4 +1,4 @@
-package xuyihao.email.sender.entity.send;
+package com.github.johnsonmoon.email.sender.entity.send;
 
 /**
  * Created by xuyh at 2017/7/6 17:03.

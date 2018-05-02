@@ -1,6 +1,6 @@
-package xuyihao.email.sender.test;
+package com.github.johnsonmoon.email.sender.test;
 
-import xuyihao.email.sender.core.EmailSender;
+import com.github.johnsonmoon.email.sender.core.EmailSender;
 
 import java.util.ArrayList;
 import java.util.Arrays;

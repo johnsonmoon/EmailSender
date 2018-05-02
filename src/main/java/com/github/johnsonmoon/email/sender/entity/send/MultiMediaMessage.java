@@ -1,4 +1,4 @@
-package xuyihao.email.sender.entity.send;
+package com.github.johnsonmoon.email.sender.entity.send;
 
 import java.util.ArrayList;
 import java.util.List;

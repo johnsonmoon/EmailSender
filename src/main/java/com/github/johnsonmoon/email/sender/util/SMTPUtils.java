@@ -1,9 +1,9 @@
-package xuyihao.email.sender.util;
+package com.github.johnsonmoon.email.sender.util;
 
-import xuyihao.email.sender.entity.Credential;
-import xuyihao.email.sender.entity.send.ContentFile;
-import xuyihao.email.sender.entity.send.MultiMediaMessage;
-import xuyihao.email.sender.entity.send.TextMessage;
+import com.github.johnsonmoon.email.sender.entity.Credential;
+import com.github.johnsonmoon.email.sender.entity.send.ContentFile;
+import com.github.johnsonmoon.email.sender.entity.send.MultiMediaMessage;
+import com.github.johnsonmoon.email.sender.entity.send.TextMessage;
 
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;

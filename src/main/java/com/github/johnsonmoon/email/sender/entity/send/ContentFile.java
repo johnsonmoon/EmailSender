@@ -1,4 +1,4 @@
-package xuyihao.email.sender.entity.send;
+package com.github.johnsonmoon.email.sender.entity.send;
 
 /**
  * file in the email message content, includes contentId and contentFilePathName

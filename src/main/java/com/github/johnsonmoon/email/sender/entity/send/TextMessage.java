@@ -1,4 +1,4 @@
-package xuyihao.email.sender.entity.send;
+package com.github.johnsonmoon.email.sender.entity.send;
 
 /**
  * Message details for sending email.(Text message)
